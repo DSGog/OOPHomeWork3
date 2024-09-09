@@ -1,10 +1,10 @@
 package OOPHomework3;
 
-import OOPHomework3.controller.UserController;
 import OOPHomework3.data.Student;
 import OOPHomework3.data.StudentGroup;
 import OOPHomework3.data.Stream;
 import OOPHomework3.data.Teacher;
+import OOPHomework3.service.StreamService;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -12,15 +12,13 @@ import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
-        UserController userController = new UserController();
+        StreamService streamService = new StreamService();
 
         Student student1 = new Student("Иван", "Иванов", "Иванович", LocalDate.of(2000, 1, 1), 1L);
         Student student2 = new Student("Пётр", "Петров", "Петрович", LocalDate.of(2001, 2, 2), 2L);
         Student student3 = new Student("Владимир", "Владимиров", "Владимирович", LocalDate.of(2002, 3, 3), 3L);
 
-
-        Teacher teacher = new Teacher("Сершгей", "Сергеев", "Сергеевич", LocalDate.of(1975, 5, 5));
-
+        Teacher teacher = new Teacher("Сергей", "Сергеев", "Сергеевич", LocalDate.of(1975, 5, 5));
 
         List<Student> studentList = new ArrayList<>();
         studentList.add(student1);
@@ -28,7 +26,6 @@ public class Main {
         studentList.add(student3);
 
         StudentGroup studentGroup = new StudentGroup(teacher, studentList);
-
 
         List<StudentGroup> groupList1 = new ArrayList<>();
         groupList1.add(studentGroup);
@@ -39,17 +36,14 @@ public class Main {
         groupList2.add(studentGroup);
         Stream stream2 = new Stream(groupList2);
 
-
         List<Stream> streams = new ArrayList<>();
         streams.add(stream2);
         streams.add(stream1);
 
-
         System.out.println("До сортировки:");
         printStreams(streams);
 
-
-        userController.sortStreams(streams);
+        streamService.sortStreams(streams);
 
         System.out.println("После сортировки:");
         printStreams(streams);

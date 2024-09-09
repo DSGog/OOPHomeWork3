@@ -1,9 +1,9 @@
-package OOPHomework3.controller;
-
-import OOPHomework3.data.User;
+package OOPHomework3.service;
 
 import java.time.LocalDate;
+import java.util.List;
 
-public interface UserController<T extends User>{
+public interface UserService<T> {
+    List<T> getAll();
     void create(String firstName, String secondName, String patronymic, LocalDate dateOfBirth);
 }

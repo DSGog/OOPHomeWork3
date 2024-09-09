@@ -1,7 +1,7 @@
 package OOPHomework3.service;
 
 import OOPHomework3.data.Student;
-import OOPHomework3.data.StudentComparator;
+import OOPHomework3.data.UserComparator;
 import OOPHomework3.data.StudentGroup;
 import OOPHomework3.data.Teacher;
 
@@ -50,7 +50,7 @@ public class StudentGroupService {
 
     public List<Student> getSortedByFIOStudentGroup(){
         List<Student> students = new ArrayList<>(studentGroup.getStudents());
-        students.sort(new StudentComparator());
+        students.sort(new UserComparator<Student>());
         return students;
     }
 }

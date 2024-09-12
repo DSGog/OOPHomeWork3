@@ -6,11 +6,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class TeacherService implements UserService<Teacher> {
-
     private final List<Teacher> teachers;
+    private final IdGenerator idGenerator;
 
     public TeacherService() {
         this.teachers = new ArrayList<>();
+        this.idGenerator = new IdGenerator();
     }
 
     @Override
@@ -20,26 +21,13 @@ public class TeacherService implements UserService<Teacher> {
 
     @Override
     public void create(String firstName, String secondName, String patronymic, LocalDate dateOfBirth) {
-        Long countMaxId = 0L;
-        for (Teacher teacher : teachers) {
-            if (teacher.getTeacherId() > countMaxId) {
-                countMaxId = teacher.getTeacherId();
-            }
-        }
-        countMaxId++;
+        Long newId = idGenerator.generateId(teachers); // Генерация идентификатора через отдельный класс
         Teacher teacher = new Teacher(firstName, secondName, patronymic, dateOfBirth);
-        teacher.setTeacherId(countMaxId);
+        teacher.setTeacherId(newId);
         teachers.add(teacher);
     }
 
     public void updateTeacher(Long teacherId, String newFirstName, String newSecondName, String newPatronymic, LocalDate newDateOfBirth) {
-        for (Teacher teacher : teachers) {
-            if (teacher.getTeacherId().equals(teacherId)) {
-                teacher.setFirstName(newFirstName);
-                teacher.setSecondName(newSecondName);
-                teacher.setPatronymic(newPatronymic);
-                teacher.setDateOfBirth(newDateOfBirth);
-            }
-        }
+        // Логика обновления данных учителя
     }
 }

@@ -18,11 +18,4 @@ public class Teacher extends User{
     public void setTeacherId(Long teacherId) {
         this.teacherId = teacherId;
     }
-
-    public static class TeacherComparator implements Comparator {
-        @Override
-        public int compare(Object o1, Object o2) {
-            return 0;
-        }
-    }
 }

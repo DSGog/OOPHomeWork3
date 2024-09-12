@@ -8,7 +8,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DataService {
-
     private List<User> users;
 
     public DataService() {
@@ -16,21 +15,7 @@ public class DataService {
     }
 
     public List<User> getAll(){
-        return this.users;
+        return this.users; // Логика только для работы с общими пользователями
     }
-
-    public void create(String firstName, String secondName, String patronymic, LocalDate dateOfBirth) {
-        Long countMaxId = 0L;
-        for (User user: this.users){
-            if(user instanceof Student){
-                if (((Student) user).getStudentId() > countMaxId){
-                    countMaxId = ((Student) user).getStudentId();
-                }
-            }
-        }
-        countMaxId++;
-
-        Student student = new Student(firstName, secondName, patronymic, dateOfBirth, countMaxId);
-        this.users.add(student);
-    }
+    // Логика создания студентов удалена
 }

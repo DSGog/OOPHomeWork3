@@ -11,7 +11,7 @@ public class TeacherView implements UserView<Teacher> {
     @Override
     public void sendOnConsole(List<Teacher> teachers) {
         for (Teacher teacher : teachers) {
-            logger.info(teacher.toString());
+            logger.info(teacher.toString()); // Выводим информацию о каждом учителе
         }
     }
 }
